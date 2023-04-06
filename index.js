@@ -14,6 +14,10 @@ function divide(num1, num2) {
     return num1 / num2;
 }
 
+function modulo(num1, num2) {
+    return num1 % num2;
+}
+
 let num1 = '';
 let num2 = '';
 let operator = '';
@@ -28,31 +32,39 @@ function operate(num1, num2, operator) {
             break;
         case '/': return divide(num1, num2);
             break;
+        case '%': return modulo(num1, num2);
+            break;
         default: alert("This operator doesn't exist");
             break;
     }
 }
 
+const dotButton = document.getElementById('btn1');
 const buttons = document.querySelectorAll('button');
 const display = document.getElementById('display');
 let displayArray = [];
-let contor = 0;
 
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', (e) => {
+        if (e.target.value === '.') {
+            dotButton.disabled = true;
+        }
         display.textContent += e.target.value;
         displayArray += e.target.value;
         if ((e.target.value === "+") ||
             (e.target.value === "-") ||
             (e.target.value === "*") ||
-            (e.target.value === "/")) {
+            (e.target.value === "/") ||
+            (e.target.value === "%")) {
             operator = e.target.value;
             for (let i = 0; i < displayArray.length - 1; i++) {
                 num1 += displayArray[i];
             }
             displayArray = '';
-            console.log(num1);
-            console.log(operator);
+            dotButton.disabled = false;
+        }
+        if (e.target.value === '.') {
+            dotButton.disabled = true;
         }
         if (e.target.value === '=') {
             for (let i = 0; i < displayArray.length - 1; i++) {
@@ -62,7 +74,6 @@ for (let i = 0; i < buttons.length; i++) {
             displayArray = "";
             let num3 = operate(+num1, +num2, operator);
             displayArray += num3;
-            console.log(displayArray);
             display.textContent = operate(+num1, +num2, operator);
             num1 = '';
             num2 = '';

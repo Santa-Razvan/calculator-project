@@ -16,7 +16,7 @@ body {
 .container {
     background-color: rgb(133, 133, 133);
     width: 400px;
-    height: 455px;
+    height: 530px;
     padding: 30px 30px;
     border: 1px solid black;
     border-radius: 10px;
@@ -43,6 +43,28 @@ body {
 .operations {
     width: 180px;
     padding-right: 7px;
+}
+
+#btnCle,
+#btnEqual,
+#btnAdd,
+#btnSub,
+#btnMul,
+#btnDiv,
+#btn1,
+#btn2 {
+    background-color: red;
+}
+
+#btnCle:hover,
+#btnEqual:hover,
+#btnAdd:hover,
+#btnSub:hover,
+#btnMul:hover,
+#btnDiv:hover,
+#btn1:hover,
+#btn2:hover {
+    background-color: rgb(203, 0, 0);
 }
 
 button {
