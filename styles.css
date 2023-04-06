@@ -27,7 +27,10 @@ body {
     width: 100%;
     border: 1px solid black;
     border-radius: 10px;
-    pointer-events: none;
+    font-size: 30px;
+    text-align: end;
+    padding: 15px 20px;
+    background-color: white;
 }
 
 .numpad {
@@ -42,7 +45,7 @@ body {
     padding-right: 7px;
 }
 
-[id^='btn'] {
+button {
     background-color: rgb(69, 69, 69);
     height: 70px;
     width: 70px;
@@ -50,4 +53,8 @@ body {
     font-size: 20px;
     color: white;
     margin: 2px 0px;
+}
+
+button:hover {
+    background-color: rgb(48, 48, 48);
 }
