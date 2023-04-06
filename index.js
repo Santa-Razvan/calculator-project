@@ -73,10 +73,16 @@ for (let i = 0; i < buttons.length; i++) {
             display.textContent = "";
             displayArray = "";
             let num3 = operate(+num1, +num2, operator);
-            displayArray += num3;
-            display.textContent = operate(+num1, +num2, operator);
-            num1 = '';
-            num2 = '';
+            if (!isFinite(num3)) {
+                display.textContent = "You can't do that!";
+                num1 = '';
+                num2 = '';
+            } else {
+                displayArray += num3;
+                display.textContent = num3;
+                num1 = '';
+                num2 = '';
+            }
         }
         if (e.target.value === "cle") {
             displayArray = [];
