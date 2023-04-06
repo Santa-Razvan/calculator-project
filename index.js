@@ -42,21 +42,37 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', (e) => {
         display.textContent += e.target.value;
         displayArray += e.target.value;
-        if (e.target.value === "=") {
+        if ((e.target.value === "+") ||
+            (e.target.value === "-") ||
+            (e.target.value === "*") ||
+            (e.target.value === "/")) {
+            operator = e.target.value;
             for (let i = 0; i < displayArray.length - 1; i++) {
-                console.log(displayArray[i]);
-                if ((displayArray[i] === '+') ||
-                    (displayArray[i] === '-') ||
-                    (displayArray[i] === '*') ||
-                    (displayArray[i] === '/')) {
-                    operator = displayArray[i];
-                    contor++;
-                } else if (contor == 1) {
-                    num2 += displayArray[i];
-                } else num1 += displayArray[i];
+                num1 += displayArray[i];
+            }
+            displayArray = '';
+            console.log(num1);
+            console.log(operator);
+        }
+        if (e.target.value === '=') {
+            for (let i = 0; i < displayArray.length - 1; i++) {
+                num2 += displayArray[i];
             }
             display.textContent = "";
+            displayArray = "";
+            let num3 = operate(+num1, +num2, operator);
+            displayArray += num3;
+            console.log(displayArray);
             display.textContent = operate(+num1, +num2, operator);
+            num1 = '';
+            num2 = '';
+        }
+        if (e.target.value === "cle") {
+            displayArray = [];
+            num1 = '';
+            num2 = '';
+            contor = 0;
+            display.textContent = '';
         }
     });
 }
